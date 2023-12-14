@@ -1,12 +1,13 @@
-list_1 = [11, 20, 123, 17, 5,12,13,19,19]
+my_list= [11,13,20,24,26,6,8,76,71]
 
-total =0
-for i in list_1:
-    total = total +i
-    average = total // len(list_1)
+prime_list = []
 
-print("total is: ",total)
-print("average is: ",average)
+for i in my_list:
+    if i>1:
+        for j in range(2,i):
+            if i%j ==0:
+                break
+        else:
+            prime_list.append(i)
 
-
-
+print(prime_list)
