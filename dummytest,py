@@ -1,0 +1,29 @@
+class Solution:
+    def maximumSetSize(nums1,nums2):
+        freq1 = {}
+        freq2 = {}
+        for num in nums1:
+            freq1[num] = freq1.get(num, 0) + 1
+        for num in nums2:
+            freq2[num] = freq2.get(num, 0) + 1
+            
+        common = {}
+        for num in freq1:
+            if num in freq2:
+                common[num] = freq1[num] + freq2[num]
+                
+        remove_count = len(nums1) // 2
+        common_sorted = sorted(common.items(), key=lambda x: x[1], reverse=True)
+        
+        for num, freq in common_sorted:
+            if remove_count <= 0:
+                break
+            remove_num = min(remove_count, freq // 2)
+            freq1[num] -= remove_num
+            freq2[num] -= remove_num
+            remove_count -= remove_num
+            
+        remaining = list(freq1.keys()) + list(freq2.keys())
+        return len(set(remaining))
+    
+    print(maximumSetSize([1,1,2,2,3,3], [4,4,5,5,6,6]))
