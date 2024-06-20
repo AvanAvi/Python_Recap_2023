@@ -5,3 +5,4 @@ def multiply(n1,n2):
 
 dota = multiply(12,5)
 print(dota)
+print(multiply(5,6))
